@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-current: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html[lang^="ar"] {
+  --font-current: var(--font-cairo), var(--font-noto-arabic), sans-serif;
+}
+
+html[lang="cop"] {
+  --font-current: "Coptic", "Antinoou", "Noto Sans Coptic", "Segoe UI Coptic", sans-serif;
+}
+
+html[lang^="am"] {
+  --font-current: var(--font-noto-ethiopic), sans-serif;
+}
+
+html[lang^="el"] {
+  --font-current: var(--font-noto-greek), sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-current);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-current);
+}
+
