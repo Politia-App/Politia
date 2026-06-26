@@ -14,6 +14,7 @@ import Header from "@/components/Header";
 import GlobalFooter from "@/components/GlobalFooter";
 import { cookies, headers } from "next/headers";
 import { LanguageProvider, SupportedLocale, LOCALE_SCRIPT_FAMILIES } from "@/context/LanguageContext";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,6 +104,7 @@ export default async function RootLayout({
           {children}
           <GlobalFooter />
         </LanguageProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
