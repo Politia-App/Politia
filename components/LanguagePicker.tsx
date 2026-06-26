@@ -115,12 +115,9 @@ export default function LanguagePicker({ placement = "bottom", align = "start" }
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 uppercase tracking-[0.1em] text-[11px] text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors duration-300 cursor-pointer focus:outline-none"
-        style={{
-          fontFamily: '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-        }}
+        className="flex items-center gap-2 uppercase tracking-[0.1em] text-[11px] text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer focus:outline-none"
       >
-        <svg className="w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-colors duration-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+        <svg className="w-4 h-4 transition-colors duration-300" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253m0 0A17.919 17.919 0 0 0 12 7.5a17.919 17.919 0 0 0 8.716 2.253" />
         </svg>
         <span>{activeNativeLabel}</span>
@@ -128,23 +125,23 @@ export default function LanguagePicker({ placement = "bottom", align = "start" }
 
       {/* Edge-to-Edge Full-Canvas Selection Overlap Layer */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 w-screen h-screen bg-white dark:bg-[#001F3F] text-zinc-900 dark:text-zinc-100 overflow-y-auto transition-opacity duration-200">
+        <div className="fixed inset-0 z-50 w-screen h-screen bg-background text-foreground overflow-y-auto transition-opacity duration-200">
           <div className="max-w-7xl mx-auto px-6 py-12 sm:px-12 sm:py-20 flex flex-col min-h-full">
             {/* Header: minimalist system label and close button */}
-            <div className="flex items-center justify-between pb-6 mb-12 border-b border-zinc-100 dark:border-zinc-800/40">
+            <div className="flex items-center justify-between pb-6 mb-12 border-b border-border">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
                   Politia System Matrix
                 </span>
-                <span className="h-4 w-[1px] bg-zinc-200 dark:bg-zinc-800"></span>
-                <span className="text-xs text-amber-600 dark:text-amber-400 font-medium uppercase tracking-wider">
+                <span className="h-4 w-[1px] bg-border"></span>
+                <span className="text-xs text-primary font-medium uppercase tracking-wider">
                   {LOCALE_OPTIONS.length} Active System Nodes
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer py-2 px-3 focus:outline-none"
+                className="text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors cursor-pointer py-2 px-3 focus:outline-none"
               >
                 ✕ Close (Esc)
               </button>
@@ -156,7 +153,7 @@ export default function LanguagePicker({ placement = "bottom", align = "start" }
                 const options = LOCALE_OPTIONS.filter((o) => o.group === groupName);
                 return (
                   <div key={groupName} className="space-y-5">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500/80">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                       {groupName}
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-6">
@@ -170,13 +167,13 @@ export default function LanguagePicker({ placement = "bottom", align = "start" }
                             dir={opt.isRtl ? "rtl" : "ltr"}
                             className={`w-full text-start flex items-center justify-between text-[13px] font-medium tracking-apple-body transition-all duration-150 cursor-pointer focus:outline-none hover:scale-[0.98] active:scale-[0.96] ${
                               isSelected
-                                ? "text-amber-600 dark:text-amber-400 font-bold scale-[0.98]"
-                                : "text-neutral-500 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+                                ? "text-primary font-bold scale-[0.98]"
+                                : "text-muted-foreground hover:text-foreground"
                             }`}
                           >
                             <span className="truncate">{opt.label}</span>
                             {isSelected && (
-                              <span className="h-1.5 w-1.5 rounded-full bg-amber-500 dark:bg-amber-400 shrink-0 mx-2"></span>
+                              <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mx-2"></span>
                             )}
                           </button>
                         );
@@ -188,7 +185,7 @@ export default function LanguagePicker({ placement = "bottom", align = "start" }
             </div>
 
             {/* Footer System Meta */}
-            <div className="border-t border-zinc-100 dark:border-zinc-800/40 pt-8 mt-16 text-[10px] text-zinc-400 dark:text-zinc-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="border-t border-border pt-8 mt-16 text-[10px] text-muted-foreground flex flex-col sm:flex-row justify-between items-center gap-4">
               <span>POLITIA DIGITAL CITIZENSHIP LOCALIZATION CORE • v1.3.0</span>
               <span>LITURGICAL COMPLIANCE ACTIVE</span>
             </div>

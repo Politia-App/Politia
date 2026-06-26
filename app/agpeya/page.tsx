@@ -25,24 +25,27 @@ export default function AgpeyaPage() {
   const [selectedHour, setSelectedHour] = useState<CanonicalHour | null>(null);
 
   return (
-    <main className="flex-1 bg-white dark:bg-[#001F3F] transition-colors duration-300">
+    <main className="flex-1 bg-background">
       <div className="mx-auto max-w-4xl px-6 py-16 sm:py-24 flex flex-col items-center">
         {/* Navigation Return */}
-        <div className="w-full flex justify-start mb-8">
+        <div className="w-full flex justify-start mb-10">
           <Link
             href="/"
-            className="text-[13px] font-medium text-neutral-400 hover:text-neutral-900 dark:hover:text-zinc-50 transition-colors"
+            className="group inline-flex items-center gap-1.5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
+            <svg className="h-4 w-4 transition-transform group-hover:-translate-x-0.5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
             {t("directory.returnToSanctuary")}
           </Link>
         </div>
 
         {/* Header */}
         <div className="text-center space-y-4 max-w-2xl mb-12">
-          <h1 className="text-4xl font-bold tracking-apple-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
+          <h1 className="text-balance text-4xl font-bold tracking-apple-tight text-foreground sm:text-5xl">
             {t("directory.agpeya.title")}
           </h1>
-          <p className="text-lg text-zinc-600 dark:text-zinc-300">
+          <p className="text-pretty text-lg text-muted-foreground">
             {t("directory.agpeya.desc")}
           </p>
         </div>
@@ -51,10 +54,10 @@ export default function AgpeyaPage() {
         <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Hour Selector Column */}
           <div className="md:col-span-5 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               {t("directory.agpeya.canonicalHours")}
             </h3>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               {HOURS.map((hour) => {
                 const isSelected = selectedHour?.id === hour.id;
                 return (
@@ -62,10 +65,10 @@ export default function AgpeyaPage() {
                     key={hour.id}
                     type="button"
                     onClick={() => setSelectedHour(hour)}
-                    className={`w-full text-start px-4 py-3 text-[13px] font-medium tracking-apple-body transition-all duration-150 cursor-pointer focus:outline-none rounded-lg hover:scale-[0.98] ${
+                    className={`w-full text-start px-4 py-3 text-[13px] font-medium tracking-apple-body transition-all duration-150 cursor-pointer focus:outline-none rounded-lg ${
                       isSelected
-                        ? "text-amber-600 dark:text-amber-400 font-bold bg-zinc-50 dark:bg-zinc-900/30"
-                        : "text-neutral-500 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+                        ? "text-primary font-semibold bg-accent"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     }`}
                   >
                     {t(hour.nameKey)}
