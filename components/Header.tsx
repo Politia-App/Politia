@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import LanguagePicker from "@/components/LanguagePicker";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,7 +14,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo and Brand Name */}
         <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3 transition-transform hover:scale-[1.02] duration-200">
+          <Link href="/#home" className="flex items-center gap-3 transition-transform hover:scale-[1.02] duration-200">
             <div className="relative h-10 w-10 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-800 shadow-sm">
               <Image
                 src="/logo.jpeg"
@@ -35,35 +34,33 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           <Link
-            href="/"
+            href="/#home"
             className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
           >
             {t("nav.home")}
           </Link>
           <Link
-            href="/despre"
+            href="/#despre"
             className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
           >
             {t("nav.about")}
           </Link>
           <Link
-            href="/servicii"
+            href="/#servicii"
             className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
           >
             {t("nav.services")}
           </Link>
           <Link
-            href="/contact"
+            href="/#contact"
             className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
           >
             {t("nav.contact")}
           </Link>
         </nav>
 
-        {/* Action Button & Language Switcher */}
+        {/* Action Button */}
         <div className="hidden md:flex items-center gap-6">
-          <LanguagePicker placement="bottom" align="end" />
-          
           <Link
             href="/login"
             className="inline-flex h-9 items-center justify-center rounded-full bg-zinc-900 px-4 text-xs font-semibold text-white shadow transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
@@ -72,10 +69,8 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile Menu & Language Switcher Button */}
+        {/* Mobile Menu Toggle Button */}
         <div className="flex items-center gap-3 md:hidden">
-          <LanguagePicker placement="bottom" align="end" />
-
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             type="button"
@@ -115,28 +110,28 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-b border-zinc-200/50 bg-white/95 px-4 pt-2 pb-4 space-y-1 shadow-lg dark:border-zinc-800/50 dark:bg-zinc-950/95 transition-all duration-300">
           <Link
-            href="/"
+            href="/#home"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
           >
             {t("nav.home")}
           </Link>
           <Link
-            href="/despre"
+            href="/#despre"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
           >
             {t("nav.about")}
           </Link>
           <Link
-            href="/servicii"
+            href="/#servicii"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
           >
             {t("nav.services")}
           </Link>
           <Link
-            href="/contact"
+            href="/#contact"
             onClick={() => setIsMobileMenuOpen(false)}
             className="block rounded-md px-3 py-2 text-base font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
           >

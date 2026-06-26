@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest",
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Politia dynamic string translation interpolation and layout fidelity configuration roadmap."
+  },
+  "interpolation_rules": {
+    "placeholder_syntax": "{variable_name}",
+    "rtl_bidi_isolation": {
+      "strategy": "Wrap all dynamic variables in unicode direction marks or HTML <bdi> tag to prevent layout distortion from mixed LTR/RTL text.",
+      "coptic_amharic_greek_isolation": "Ensure target fonts are isolated using styling overrides so standard English strings in translations use Inter, while native strings use Noto/Custom fonts."
+    },
+    "layout_fidelity_thresholds": {
+      "max_heading_chars": 80,
+      "max_subtitle_chars": 200,
+      "max_cta_chars": 25,
+      "text_wrapping": "Use clamp() or responsive flex/grid layouts with flat color structures to handle variable translations gracefully (e.g., German/Amharic can be 30-40% longer than English)."
+    }
+  },
+  "translations_roadmap": {
+    "hero": {
+      "badge": {
+        "description": "Top highlight badge above main headline",
+        "ltr_default": "Orthodox Christian Spiritual Citizenship",
+        "rtl_default": "المواطنة الروحية الأرثوذكسية",
+        "placeholders": {}
+      },
+      "title": {
+        "description": "Landing page main headline",
+        "ltr_default": "A Sanctuary for Liturgical and Community Life",
+        "rtl_default": "ملاذ للحياة الليتورجية والمجتمعية",
+        "placeholders": {}
+      },
+      "subtitle": {
+        "description": "Core value proposition paragraph",
+        "ltr_default": "Politia weaves together the timeless teachings of the Coptic Orthodox Church, sacred Agpeya prayers, parish coordination, and traditional hymns into a single quiet space.",
+        "rtl_default": "تجمع بوليتيا بين التعاليم الخالدة للكنيسة القبطية الأرثوذكسية، صلوات الأجبية المقدسة، تنسيق الرعاية، والألحان التراثية في مساحة هادئة واحدة.",
+        "placeholders": {}
+      }
+    },
+    "features": {
+      "card_title_template": {
+        "description": "Dynamic layout check displaying localized feature categories",
+        "ltr_default": "Explore {category}",
+        "rtl_default": "استكشاف {category}",
+        "placeholders": {
+          "category": {
+            "type": "string",
+            "example": "Katamaros / القطمارس",
+            "rendering_guideline": "Wrap placeholder in <bdi> tag to maintain correct reading direction when language of category differs from current direction."
+          }
+        }
+      }
+    },
+    "contact": {
+      "welcome_message": {
+        "description": "Greeting shown upon successful form submission",
+        "ltr_default": "Peace be with you, {name}. A servant from our community will contact you at {email} shortly.",
+        "rtl_default": "سلام الرب معك يا {name}. سيتواصل معك أحد الخدام على {email} قريباً.",
+        "placeholders": {
+          "name": {
+            "type": "string",
+            "example": "Thomas",
+            "rendering_guideline": "Ensure alignment is start-anchored for text inputs to prevent cursor jump on focus."
+          },
+          "email": {
+            "type": "string",
+            "example": "servant@politia.app",
+            "rendering_guideline": "Force LTR direction even in RTL layouts using dir='ltr' style rules for raw email addresses."
+          }
+        }
+      }
+    }
+  }
+}

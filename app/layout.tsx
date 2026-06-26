@@ -5,14 +5,15 @@ import {
   Inter,
   Cairo,
   Noto_Sans_Arabic,
-  Noto_Sans_Ethiopic,
   Noto_Sans,
+  Noto_Naskh_Arabic,
+  Noto_Sans_Thai,
 } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import GlobalFooter from "@/components/GlobalFooter";
 import { cookies, headers } from "next/headers";
-import { LanguageProvider, SupportedLocale } from "@/context/LanguageContext";
+import { LanguageProvider, SupportedLocale, LOCALE_SCRIPT_FAMILIES } from "@/context/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,14 +40,19 @@ const notoArabic = Noto_Sans_Arabic({
   subsets: ["arabic"],
 });
 
-const notoEthiopic = Noto_Sans_Ethiopic({
-  variable: "--font-noto-ethiopic",
-  subsets: ["ethiopic"],
-});
-
 const notoGreek = Noto_Sans({
   variable: "--font-noto-greek",
   subsets: ["greek"],
+});
+
+const notoNaskh = Noto_Naskh_Arabic({
+  variable: "--font-noto-naskh",
+  subsets: ["arabic"],
+});
+
+const notoThai = Noto_Sans_Thai({
+  variable: "--font-noto-thai",
+  subsets: ["thai"],
 });
 
 export const metadata: Metadata = {
@@ -63,19 +69,11 @@ export default async function RootLayout({
   const headerStore = await headers();
 
   const VALID_LOCALES: SupportedLocale[] = [
-    "ar", "ar-EG", "ar-SA", "ar-AE",
-    "cop",
-    "en", "en-US", "en-GB", "en-CA", "en-AU", "en-IN",
-    "fr", "fr-FR",
-    "it", "it-IT",
-    "de", "de-DE",
-    "es", "es-ES",
-    "am", "am-ET",
-    "pt", "pt-PT",
-    "nl", "nl-NL",
-    "sv", "sv-SE",
-    "el", "el-GR",
-    "sw", "sw-KE"
+    "cop", "ar-EG", "am-ET", "el-GR",
+    "ar", "ar-SA", "ar-AE", "he-IL", "fa-IR", "hi-IN", "ja-JP", "ko-KR", "zh-CN", "zh-TW", "th-TH", "vi-VN",
+    "en", "en-US", "en-GB", "en-CA", "en-AU", "en-IN", "fr-FR", "fr-CA", "de-DE", "es-ES", "it-IT", "nl-NL", "pt-PT", "pt-BR",
+    "ru-RU", "uk-UA", "pl-PL", "cs-CZ", "hu-HU", "ro-RO", "bg-BG",
+    "sv-SE", "nb-NO", "da-DK", "fi-FI", "sw-KE", "af-ZA", "tr-TR", "id-ID", "ms-MY", "cy-GB"
   ];
 
   let locale: SupportedLocale = "en";
@@ -88,13 +86,16 @@ export default async function RootLayout({
     locale = localeCookie as SupportedLocale;
   }
 
-  const dir = locale.startsWith("ar") ? "rtl" : "ltr";
+  const RTL_LOCALES = ["ar", "ar-EG", "ar-SA", "ar-AE", "he-IL", "fa-IR"];
+  const dir = RTL_LOCALES.includes(locale) ? "rtl" : "ltr";
+  const scriptFamily = LOCALE_SCRIPT_FAMILIES[locale] || "latin";
 
   return (
     <html
       lang={locale}
       dir={dir}
-      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${cairo.variable} ${notoArabic.variable} ${notoEthiopic.variable} ${notoGreek.variable} h-full antialiased`}
+      data-script-family={scriptFamily}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${cairo.variable} ${notoArabic.variable} ${notoGreek.variable} ${notoNaskh.variable} ${notoThai.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <LanguageProvider initialLocale={locale}>

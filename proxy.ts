@@ -3,30 +3,13 @@ import type { NextRequest } from "next/server";
 
 const SUPPORTED_LOCALES = [
   "ar", "ar-EG", "ar-SA", "ar-AE",
-  "cop",
-  "en", "en-US", "en-GB", "en-CA", "en-AU", "en-IN",
-  "fr", "fr-FR",
-  "it", "it-IT",
-  "de", "de-DE",
-  "es", "es-ES",
-  "am", "pt", "nl", "sv", "el", "sw"
+  "en", "en-US", "en-GB", "en-CA", "en-AU", "en-IN"
 ];
 const DEFAULT_LOCALE = "en";
 
 const BASE_MAPPINGS: Record<string, string> = {
   ar: "ar-EG",
-  en: "en-US",
-  fr: "fr-FR",
-  de: "de-DE",
-  es: "es-ES",
-  it: "it-IT",
-  cop: "cop",
-  am: "am",
-  pt: "pt",
-  nl: "nl",
-  sv: "sv",
-  el: "el",
-  sw: "sw"
+  en: "en-US"
 };
 
 export function proxy(request: NextRequest) {
