@@ -2,27 +2,27 @@
 
 :root {
   /* Surfaces */
-  --background: #faf9f6;
-  --foreground: #1c1917;
-  --card: #ffffff;
+  --background: #ffffff; /* Pure Flat White */
+  --foreground: #1c1917; /* Minimalist dark grey */
+  --card: #f8f9fa; /* Light Parchment */
   --card-foreground: #1c1917;
 
   /* Muted / secondary */
-  --muted: #f1efe9;
-  --muted-foreground: #78736b;
-  --border: #e7e3da;
-  --input: #e7e3da;
+  --muted: #f8f9fa;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
 
-  /* Brand accent (amber / liturgical gold) */
-  --primary: #c2710c;
+  /* Brand accent (Matte Gold & Action Blue) */
+  --primary: #0066cc; /* Action Blue for universal interactive triggers */
   --primary-foreground: #ffffff;
-  --accent: #fbeccb;
-  --accent-foreground: #8a4f06;
-  --ring: #d97706;
+  --accent: #D4AF37; /* Absolute Matte Gold for sacred focal points */
+  --accent-foreground: #1c1917;
+  --ring: #0066cc;
 
   --radius: 1rem;
 
-  --font-current: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-current: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 html[data-script-family="arabic"] {
@@ -82,22 +82,22 @@ html[data-script-family="cjk"] {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Deep navy brand surface (matches the splash identity) */
-    --background: #001a35;
-    --foreground: #eef2f7;
-    --card: #002344;
-    --card-foreground: #eef2f7;
+    /* Dark Canvas */
+    --background: #001F3F; /* Solid Deep Royal Blue */
+    --foreground: #f8fafc;
+    --card: #001A4D; /* Deepest Royal Blue */
+    --card-foreground: #f8fafc;
 
-    --muted: #002a52;
-    --muted-foreground: #8ea3bd;
-    --border: #103a63;
-    --input: #103a63;
+    --muted: #001A4D;
+    --muted-foreground: #94a3b8;
+    --border: #1e293b;
+    --input: #1e293b;
 
-    --primary: #fbbf24;
-    --primary-foreground: #1a1205;
-    --accent: #0a3158;
-    --accent-foreground: #fcd34d;
-    --ring: #fbbf24;
+    --primary: #0066cc; /* Action Blue */
+    --primary-foreground: #ffffff;
+    --accent: #D4AF37; /* Absolute Matte Gold */
+    --accent-foreground: #001F3F;
+    --ring: #D4AF37;
   }
 }
 
@@ -105,6 +105,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-current);
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.28px;
 }
 
 html {
@@ -113,7 +116,7 @@ html {
 
 @utility tracking-apple-tight {
   html[dir="ltr"] & {
-    letter-spacing: -0.022em;
+    letter-spacing: -0.374px; /* Micro-tracking for headlines */
   }
   html[dir="rtl"] & {
     letter-spacing: normal;
@@ -122,10 +125,17 @@ html {
 
 @utility tracking-apple-body {
   html[dir="ltr"] & {
-    letter-spacing: -0.28px;
+    letter-spacing: -0.28px; /* Micro-tracking for body */
   }
   html[dir="rtl"] & {
     letter-spacing: normal;
+  }
+}
+
+@utility touch-response {
+  transition: all 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  &:active {
+    transform: scale(0.95);
   }
 }
 
@@ -152,3 +162,4 @@ html {
 @utility animate-fade-in {
   animation: fade-in 0.5s ease-out both;
 }
+

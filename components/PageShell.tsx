@@ -29,7 +29,7 @@ export default function PageShell({
         <div className="mb-10 flex justify-start">
           <Link
             href="/"
-            className="group inline-flex items-center gap-1.5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="group inline-flex items-center gap-1.5 text-[13px] font-medium text-muted-foreground touch-response hover:text-foreground"
           >
             <svg className="h-4 w-4 transition-transform group-hover:-translate-x-0.5 rtl:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -43,7 +43,7 @@ export default function PageShell({
           <h1 className="text-balance text-4xl font-bold tracking-apple-tight text-foreground sm:text-5xl">
             {t(titleKey)}
           </h1>
-          <p className="text-pretty text-lg leading-8 text-muted-foreground">{t(descKey)}</p>
+          <p className="text-pretty text-lg leading-8 tracking-apple-body text-muted-foreground">{t(descKey)}</p>
         </div>
 
         {children}

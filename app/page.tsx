@@ -32,7 +32,7 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`group rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 ${className}`}
+      className={`group rounded-2xl bg-card p-8 touch-response ${className}`}
     >
       <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-accent-foreground transition-transform duration-300 group-hover:scale-105">
         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
       {/* 1. Hero */}
-      <section id="home" className="relative w-full overflow-hidden border-b border-border">
+      <section id="home" className="relative w-full overflow-hidden">
         {/* Decorative hero image, subtle */}
         <div className="pointer-events-none absolute inset-0 -z-10">
           <Image
@@ -74,7 +74,7 @@ export default function Home() {
             priority
             className="object-cover opacity-[0.08] dark:opacity-[0.18]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+          <div className="absolute inset-0 bg-background/90" />
         </div>
 
         <main className="mx-auto flex w-full max-w-5xl flex-col items-center px-6 py-24 text-center sm:px-12 md:py-32">
@@ -94,13 +94,13 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <a
               href="#servicii"
-              className="flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-[0.98]"
+              className="flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground touch-response hover:opacity-90"
             >
               {t("hero.cta_online")}
             </a>
             <a
               href="#despre"
-              className="flex h-12 items-center justify-center rounded-full border border-border bg-card px-7 text-sm font-semibold text-foreground transition-all hover:bg-muted active:scale-[0.98]"
+              className="flex h-12 items-center justify-center rounded-full bg-card px-7 text-sm font-semibold text-foreground touch-response hover:bg-muted"
             >
               {t("hero.cta_more")}
             </a>
@@ -121,7 +121,7 @@ export default function Home() {
       </section>
 
       {/* 2. About */}
-      <section id="despre" className="w-full border-b border-border px-6 py-20 sm:px-12 md:py-28">
+      <section id="despre" className="w-full px-6 py-20 sm:px-12 md:py-28">
         <div className="mx-auto max-w-5xl space-y-12">
           <div className="space-y-4 text-center md:text-start">
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">
@@ -136,7 +136,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 pt-2 md:grid-cols-2">
-            <div className="space-y-4 rounded-2xl border border-border bg-card p-8">
+            <div className="space-y-4 rounded-2xl bg-card p-8">
               <div className="h-1.5 w-12 rounded-full bg-primary" />
               <h3 className="text-xl font-semibold tracking-apple-body text-card-foreground">
                 {t("aboutPage.story_title")}
@@ -144,7 +144,7 @@ export default function Home() {
               <p className="text-sm leading-relaxed text-muted-foreground">{t("aboutPage.story_desc")}</p>
             </div>
 
-            <div className="flex flex-col justify-between rounded-2xl border border-border bg-accent/40 p-8">
+            <div className="flex flex-col justify-between rounded-2xl bg-accent/20 p-8">
               <div className="space-y-4">
                 <span className="text-[11px] font-semibold uppercase tracking-widest text-accent-foreground">
                   Politia Ecosystem
@@ -153,7 +153,7 @@ export default function Home() {
                   {"\u201CThe kingdom of God is within you.\u201D"} {"\u2014 Luke 17:21"}
                 </p>
               </div>
-              <div className="mt-6 flex items-center justify-between border-t border-border pt-6 text-xs text-muted-foreground">
+              <div className="mt-6 flex items-center justify-between pt-6 text-xs text-muted-foreground">
                 <span>Established 2026</span>
                 <span>v1.0.0</span>
               </div>
@@ -163,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* 3. Services */}
-      <section id="servicii" className="w-full border-b border-border px-6 py-20 sm:px-12 md:py-28">
+      <section id="servicii" className="w-full px-6 py-20 sm:px-12 md:py-28">
         <div className="mx-auto max-w-7xl space-y-16">
           <div className="space-y-4 text-center">
             <span className="text-xs font-semibold uppercase tracking-widest text-primary">{t("nav.services")}</span>
@@ -198,7 +198,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 items-start gap-8 pt-2 lg:grid-cols-2">
             {/* Form */}
-            <div className="rounded-3xl border border-border bg-card p-8">
+            <div className="rounded-3xl bg-card p-8">
               {status === "success" ? (
                 <div className="animate-fade-in space-y-4 py-12 text-center">
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground">
@@ -233,7 +233,7 @@ export default function Home() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
+                      className="w-full rounded-xl bg-background px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
 
@@ -247,7 +247,7 @@ export default function Home() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
+                      className="w-full rounded-xl bg-background px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
 
@@ -261,14 +261,14 @@ export default function Home() {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
+                      className="w-full resize-none rounded-xl bg-background px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="flex h-12 w-full items-center justify-center rounded-xl bg-primary text-sm font-semibold text-primary-foreground transition-all duration-200 hover:opacity-90 active:scale-[0.99] disabled:opacity-50"
+                    className="flex h-12 w-full items-center justify-center rounded-xl bg-primary text-sm font-semibold text-primary-foreground touch-response hover:opacity-90 disabled:opacity-50"
                   >
                     {status === "sending"
                       ? t("locale") === "ar"
@@ -281,13 +281,13 @@ export default function Home() {
             </div>
 
             {/* Information */}
-            <div className="space-y-6 rounded-3xl border border-border bg-card p-8">
+            <div className="space-y-6 rounded-3xl bg-card p-8">
               <h3 className="text-xl font-semibold tracking-apple-body text-card-foreground">
                 {t("contactPage.info_title")}
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{t("contactPage.info_desc")}</p>
 
-              <div className="space-y-4 border-t border-border pt-6">
+              <div className="space-y-4 pt-6">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground">
                     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">

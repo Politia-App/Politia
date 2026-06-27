@@ -18,14 +18,14 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo and Brand Name */}
         <Link
           href="/#home"
-          className="flex items-center gap-3 transition-transform duration-200 hover:scale-[1.02]"
+          className="flex items-center gap-3 touch-response"
         >
-          <div className="relative h-9 w-9 overflow-hidden rounded-full border border-border shadow-sm">
+          <div className="relative h-9 w-9 overflow-hidden rounded-full">
             <Image
               src="/logo.jpeg"
               alt="Politia App Logo"
@@ -46,7 +46,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground touch-response hover:bg-muted hover:text-foreground"
             >
               {link.label}
             </Link>
@@ -58,7 +58,7 @@ export default function Header() {
           <LanguagePicker placement="bottom" align="end" />
           <Link
             href="/login"
-            className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-5 text-xs font-semibold text-primary-foreground shadow-sm transition-all hover:opacity-90 active:scale-[0.98]"
+            className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-5 text-xs font-semibold text-primary-foreground touch-response hover:opacity-90"
           >
             {t("nav.login")}
           </Link>
@@ -70,7 +70,7 @@ export default function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus:outline-none"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground touch-response hover:bg-muted hover:text-foreground focus:outline-none"
             aria-controls="mobile-menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -97,14 +97,14 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="animate-fade-in space-y-1 border-b border-border bg-background/95 px-4 pb-4 pt-2 shadow-lg backdrop-blur-xl md:hidden"
+          className="animate-fade-in space-y-1 bg-background/95 px-4 pb-4 pt-2 backdrop-blur-xl md:hidden"
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block rounded-lg px-3 py-2.5 text-base font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="block rounded-lg px-3 py-2.5 text-base font-medium text-muted-foreground touch-response hover:bg-muted hover:text-foreground"
             >
               {link.label}
             </Link>
@@ -113,7 +113,7 @@ export default function Header() {
             <Link
               href="/login"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex w-full items-center justify-center rounded-full bg-primary py-2.5 text-center text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
+              className="flex w-full items-center justify-center rounded-full bg-primary py-2.5 text-center text-sm font-semibold text-primary-foreground touch-response hover:opacity-90"
             >
               {t("nav.login")}
             </Link>
